@@ -19,7 +19,7 @@ namespace EmployeeManagement.Controllers
 
 
 
-     
+      
         public ViewResult Index()
         {
             var model = _employeeRepository.GetAllEmployee();
@@ -42,7 +42,7 @@ namespace EmployeeManagement.Controllers
         [HttpGet]
         public ViewResult Create()
         {
-            return View();
+            return View(); 
         }
 
         [HttpPost]
@@ -51,7 +51,7 @@ namespace EmployeeManagement.Controllers
             if(ModelState.IsValid)
             {
                 Employee newEmployee = _employeeRepository.Add(employee);
-                return RedirectToAction("details", new { id = newEmployee.Id });
+                //return RedirectToAction("details", new { id = newEmployee.Id });
             }
             return View();
         }

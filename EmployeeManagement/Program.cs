@@ -1,8 +1,11 @@
 using EmployeeManagement.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContextPool<AppDbContext>(option =>
+    option.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeDBConnection")));
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
 var app = builder.Build();
